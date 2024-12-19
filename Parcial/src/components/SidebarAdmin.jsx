@@ -2,7 +2,7 @@ import React from "react";
 import { FaHome, FaUserGraduate, FaCogs, FaSignOutAlt } from "react-icons/fa";
 import "../css/SidebarAdmin.css";
 
-const SidebarAdmin = () => {
+const SidebarAdmin = ({ onChangeView }) => {
   return (
     <div
       className="sidebar text-white d-flex flex-column"
@@ -24,31 +24,31 @@ const SidebarAdmin = () => {
 
       {/* Menú */}
       <nav className="nav flex-column py-3">
-        <a
-          href="/"
-          className="nav-link text-white d-flex align-items-center mb-2"
+        <button
+          className="nav-link text-white d-flex align-items-center mb-2 btn"
+          onClick={() => onChangeView("listView")}
         >
           <FaHome className="me-2" />
           <span>Producto</span>
-        </a>
-        <a
-          href="/students"
-          className="nav-link text-white d-flex align-items-center mb-2"
+        </button>
+        <button
+          className="nav-link text-white d-flex align-items-center mb-2 btn"
+          onClick={() => onChangeView("createProductView")}
         >
           <FaUserGraduate className="me-2" />
           <span>Students</span>
-        </a>
-        <a
-          href="/settings"
-          className="nav-link text-white d-flex align-items-center mb-2"
+        </button>
+        <button
+          className="nav-link text-white d-flex align-items-center mb-2 btn"
+          onClick={() => onChangeView("settings")}
         >
           <FaCogs className="me-2" />
           <span>Settings</span>
-        </a>
+        </button>
       </nav>
 
       {/* Logout */}
-      <div className="mt-auto text-center py-3  d-flex justify-content-center">
+      <div className="mt-auto text-center py-3 d-flex justify-content-center">
         <button className="btn btn-outline-light logout-btn">
           <FaSignOutAlt className="me-2" />
           Logout
