@@ -1,5 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom'; // Importa Link de React Router
+import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFacebook, faTwitter, faTiktok, faInstagram, faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import logo from '../assets/image/LogoSinFondo.png';
 
 const Navbar = () => {
@@ -58,14 +60,33 @@ const Navbar = () => {
             </li>
           </ul>
 
-          {/* Botón derecho */}
-          <Link
-            to="/buscar"
-            className="btn btn-dark rounded-pill px-4"
-            style={{ fontWeight: 'bold' }}
-          >
-            FIND A CHIPOTLE
-          </Link>
+          {/* Iconos de redes sociales y botón derecho */}
+          <div className="d-flex align-items-center">
+            <div className="me-3">
+              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-dark me-2">
+                <FontAwesomeIcon icon={faFacebook} size="lg" />
+              </a>
+              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-dark me-2">
+                <FontAwesomeIcon icon={faTwitter} size="lg" />
+              </a>
+              <a href="https://www.tiktok.com" target="_blank" rel="noopener noreferrer" className="text-dark me-2">
+                <FontAwesomeIcon icon={faTiktok} size="lg" />
+              </a>
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-dark me-2">
+                <FontAwesomeIcon icon={faInstagram} size="lg" />
+              </a>
+              <a href="https://wa.me/529981234567" target="_blank" rel="noopener noreferrer" className="text-dark">
+                <FontAwesomeIcon icon={faWhatsapp} size="lg" />
+              </a>
+            </div>
+            <Link
+              to="/buscar"
+              className="btn btn-dark rounded-pill px-4"
+              style={{ fontWeight: 'bold' }}
+            >
+              FIND A CHIPOTLE
+            </Link>
+          </div>
         </div>
       </div>
     </nav>

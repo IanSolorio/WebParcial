@@ -1,60 +1,37 @@
 import React, { useEffect, useState } from "react";
-import Swal from "sweetalert2";
-import { deleteProductoId, getProductos } from "../services/ProductoService";
-import ProductTable from "../components/ProductTableAdmin";
+import Swal from "sweetalert2"; // Para manejar alertas de error
+import { getProductos } from "../services/ProductoService";
+import ProductsTable from "../components/ProductTableAdmin";
 
 const ListView = () => {
-  const [productos, setProductos] = useState([]);
+  const [productos, setProductos] = useState([]); // Estado para guardar los productos
+  const [loading, setLoading] = useState(true); // Indicador de carga
 
-  // Obtener productos al cargar el componente
+  // Cargar productos al montar el componente
   useEffect(() => {
     const fetchProductos = async () => {
       try {
-        const data = await getProductos();
-        setProductos(data);
+        const data = await getProductos(); // Llama a tu servicio
+        setProductos(data); // Guarda los productos en el estado
       } catch (error) {
         Swal.fire("Error", "No se pudieron cargar los productos", "error");
+      } finally {
+        setLoading(false); // Finaliza el estado de carga
       }
     };
 
     fetchProductos();
-  }, []);
+  }, []); // El efecto se ejecuta solo al montar el componente
 
-  // Manejar eliminación de productos
-  const handleDelete = async (id) => {
-    const confirmar = await Swal.fire({
-      title: "¿Estás seguro?",
-      text: "No podrás revertir esto",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonText: "Sí, eliminarlo",
-      cancelButtonText: "Cancelar",
-    });
-
-    if (confirmar.isConfirmed) {
-      try {
-        await deleteProductoId(id);
-        setProductos(productos.filter((producto) => producto.id !== id));
-        Swal.fire("Eliminado", "El producto ha sido eliminado.", "success");
-      } catch (error) {
-        Swal.fire("Error", "No se pudo eliminar el producto.", "error");
-      }
-    }
-  };
-
-  // Manejar edición de productos
-  const handleEdit = (id) => {
-    Swal.fire("Editar Producto", `Aquí se editaría el producto con ID: ${id}`, "info");
-  };
+  // Mostrar un indicador de carga si los datos están siendo obtenidos
+  if (loading) {
+    return <p>Cargando productos...</p>;
+  }
 
   return (
     <div>
       <h1>Listado de Productos</h1>
-      <ProductTable
-        productos={productos}
-        onDelete={handleDelete}
-        onEdit={handleEdit}
-      />
+      <ProductsTable productos={productos} /> {/* Pasa los productos a ProductsTable */}
     </div>
   );
 };
