@@ -1,23 +1,34 @@
 import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import Promo from './components/Promo';
-import AdminPanel from './views/AdminPanel';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; 
-
-function App() {
+import Presentacion from './components/Presentacion';
+import Contact from './pages/Contactanos';
+import Promotions from './components/Promociones';
+import Content from './components/Content';
+import AdminPanel from './views/AdminPanel';function App() {
   return (
     <Router>
+      <Navbar />
       <Routes>
-        <Route 
-          path="/" 
-          element={
-            <>
-              <Navbar />
-              <Promo />
-            </>
-          } 
+        {/* Página principal */}
+        <Route
+          path="/"
+          element={(
+            <div>
+              <Presentacion />
+              <Promotions />
+              <Content />
+            </div>
+          )}
         />
-        
+        {/* Página de productos */}
+        <Route path="/productos" element={<h1>Productos</h1>} />
+        {/* Página de nosotros */}
+        <Route path="/nosotros" element={<h1>Nosotros</h1>} />
+        {/* Página de ubícanos */}
+        <Route path="/ubicanos" element={<h1>Ubícanos</h1>} />
+        {/* Página de contáctanos */}
+        <Route path="/contact" element={<Contact />} />
         <Route path="/admin" element={
           <AdminPanel />
           } />

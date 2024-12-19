@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'; // Importa Link de React Router
 import logo from '../assets/image/LogoSinFondo.png';
 
 const Navbar = () => {
@@ -6,13 +7,13 @@ const Navbar = () => {
     <nav className="navbar navbar-expand-lg bg-white border-bottom shadow-sm">
       <div className="container">
         {/* Logo */}
-        <a className="navbar-brand d-flex align-items-center" href="#">
-            <img
-                src={logo}
-                alt="Logo"
-                style={{ width: '50px', height: '50px', marginRight: '10px' }}
-            />
-        </a>
+        <Link className="navbar-brand d-flex align-items-center" to="/">
+          <img
+            src={logo}
+            alt="Logo"
+            style={{ width: '50px', height: '50px', marginRight: '10px' }}
+          />
+        </Link>
 
         {/* Botón de colapso en dispositivos pequeños */}
         <button
@@ -31,40 +32,40 @@ const Navbar = () => {
         <div className="collapse navbar-collapse" id="navbarContent">
           <ul className="navbar-nav mx-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <a className="nav-link fw-bold" href="#">
+              <Link className="nav-link fw-bold" to="/">
                 HOME
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link fw-bold" href="#">
+              <Link className="nav-link fw-bold" to="/productos">
                 PRODUCTOS
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link fw-bold" href="#">
+              <Link className="nav-link fw-bold" to="/nosotros">
                 NOSOTROS
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link fw-bold" href="#">
-                UBICANOS
-              </a>
+              <Link className="nav-link fw-bold" to="/ubicanos">
+                UBÍCANOS
+              </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link fw-bold" href="#">
+              <Link className="nav-link fw-bold" to="/contact">
                 CONTACTANOS
-              </a>
+              </Link>
             </li>
           </ul>
 
           {/* Botón derecho */}
-          <a
-            href="#"
+          <Link
+            to="/buscar"
             className="btn btn-dark rounded-pill px-4"
             style={{ fontWeight: 'bold' }}
           >
             FIND A CHIPOTLE
-          </a>
+          </Link>
         </div>
       </div>
     </nav>
