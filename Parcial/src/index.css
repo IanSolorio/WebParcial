@@ -156,3 +156,21 @@ form textarea:focus {
     height: auto;
   }
 }
+
+/* Footer */
+
+footer {
+  font-size: 14px;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+footer h5 {
+  margin-bottom: 15px;
+}
+
+footer p {
+  margin-bottom: 10px;
+}
