@@ -1,0 +1,119 @@
+/* Sección de Misión y Visión */
+.mision-vision-container {
+    background-color: rgba(236, 229, 221, 0.9);
+    /* Fondo semitransparente encima de la imagen */
+    border-radius: 15px;
+    padding: 50px 20px;
+    /* Espaciado interno */
+    margin-bottom: 30px;
+    background-blend-mode: overlay;
+}
+
+/* Tarjetas de Misión y Visión */
+.mision-vision-container .card {
+    background-color: rgba(255, 255, 255, 0.9);
+    /* Fondo blanco semitransparente */
+    border-radius: 10px;
+    /* Bordes redondeados */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* Sombra ligera */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /* Efecto hover */
+}
+
+/* Efecto hover en las tarjetas */
+.mision-vision-container .card:hover {
+    transform: translateY(-5px);
+    /* Elevar tarjeta al pasar el ratón */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    /* Sombra más marcada */
+}
+
+/* Títulos de las tarjetas */
+.mision-vision-container .card-title {
+    color: #8B0000;
+    /* Color del título */
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+/* Texto de las tarjetas */
+.mision-vision-container .card-text {
+    color: #333;
+    /* Color del texto */
+    line-height: 1.6;
+    /* Altura de línea */
+    font-size: 1rem;
+}
+
+/* Ajustes responsivos */
+@media (max-width: 768px) {
+    .mision-vision-container {
+        padding: 30px 15px;
+        /* Reducir espaciado interno en pantallas pequeñas */
+    }
+
+    .mision-vision-container .card-title {
+        font-size: 1.2rem;
+        /* Reducir tamaño del título */
+    }
+
+    .mision-vision-container .card-text {
+        font-size: 0.9rem;
+        /* Reducir tamaño del texto */
+    }
+}
+/* EMPLEADOS  */
+
+.empleado-card {
+    border-radius: 15px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.empleado-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.empleado-img {
+    height: 150px;
+    width: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin: 10px auto;
+    display: block;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.card-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.card-subtitle {
+    font-size: 1rem;
+    margin-top: 5px;
+    color: #555;
+}
+
+.card-text {
+    margin-top: 10px;
+    font-size: 0.95rem;
+    color: #555;
+}
+
+.rating-stars {
+    margin-top: 15px;
+}
+
+.rating-stars svg {
+    transition: transform 0.2s;
+}
+
+.rating-stars svg:hover {
+    transform: scale(1.2);
+}
