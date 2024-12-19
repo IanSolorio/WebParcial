@@ -5,7 +5,8 @@ import Presentacion from './components/Presentacion';
 import Contact from './pages/Contactanos';
 import Promotions from './components/Promociones';
 import Content from './components/Content';
-import AdminPanel from './views/AdminPanel';function App() {
+import AdminPanel from './views/AdminPanel';
+function App() {
   return (
     <Router>
       <Navbar />
