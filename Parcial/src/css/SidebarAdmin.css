@@ -1,0 +1,68 @@
+/* SidebarAdmin.css */
+
+/* Fondo y estilo del sidebar */
+.sidebar {
+  background-color: #c6b174; /* Azul oscuro */
+  color: white;
+  font-family: 'Arial', sans-serif;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo del perfil */
+.sidebar img {
+  border: 3px solid white;
+}
+
+.sidebar h5 {
+  font-weight: bold;
+}
+
+.sidebar p {
+  color: #cbd5e1; /* Gris claro */
+}
+
+/* Estilo del menú */
+.sidebar .nav-link {
+  font-size: 1rem;
+  padding: 0.8rem 1rem;
+  transition: background 0.3s ease, border-left 0.3s ease;
+}
+
+/* Efecto dinámico cuando se pone el cursor encima */
+.sidebar .nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-left: 5px solid #f59e0b; /* Amarillo para resaltar */
+  text-decoration: none;
+}
+
+/* Estilo del botón Logout */
+.sidebar .btn {
+  padding: 0.4rem 0.8rem; /* Reduce el tamaño del botón */
+  border-radius: 15px; /* Botón más compacto */
+  transition: background-color 0.3s ease, color 0.3s ease;
+  width: 80%; /* Ajustar ancho del botón */
+}
+
+.sidebar .btn:hover {
+  background-color: white;
+  color: #1e3a8a; /* Azul oscuro */
+}
+
+@media (max-height: 900px) {
+  .sidebar {
+    height: 100vh; /* Ajusta a la altura completa de la pantalla */
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 200px; /* Reduce el ancho en pantallas pequeñas */
+  }
+
+  .main-content {
+    margin-left: 200px; /* Ajusta el margen del contenido principal */
+  }
+}
