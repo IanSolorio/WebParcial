@@ -23,7 +23,9 @@
     "react-marquee-slider": "^1.1.5",
     "react-rating-stars-component": "^2.2.0",
     "react-router-dom": "^7.0.2",
-    "react-tiktok-embed": "^1.0.0"
+    "react-tiktok-embed": "^1.0.0",
+    "sweetalert2": "^11.15.2",
+    "uuid": "^11.0.3"
   },
   "devDependencies": {
     "@eslint/js": "^9.15.0",

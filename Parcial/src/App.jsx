@@ -1,7 +1,7 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import Footer from './components/Footer'; // Importa el Footer
+import Footer from './components/Footer';
 import Presentacion from './components/Presentacion';
 import Contact from './pages/Contactanos';
 import Promotions from './components/Promociones';
@@ -10,14 +10,19 @@ import AdminPanel from './views/AdminPanel';
 import Conocenos from './pages/Conocenos';
 
 function App() {
+  // Hook para obtener la ubicación actual
+  const location = useLocation();
+
+  // Rutas donde no se debe mostrar Navbar y Footer
+  const hideNavbarAndFooter = location.pathname === '/admin';
+
   return (
-    <Router>
-      {/* Barra de navegación */}
-      <Navbar />
+    <>
+      {/* Mostrar Navbar solo si no estamos en /admin */}
+      {!hideNavbarAndFooter && <Navbar />}
 
       {/* Rutas de la aplicación */}
       <Routes>
-        {/* Página principal */}
         <Route
           path="/"
           element={(
@@ -28,22 +33,26 @@ function App() {
             </>
           )}
         />
-        {/* Página de productos */}
         <Route path="/productos" element={<h1>Productos</h1>} />
-        {/* Página de nosotros */}
         <Route path="/nosotros" element={<Conocenos />} />
-        {/* Página de ubícanos */}
         <Route path="/ubicanos" element={<h1>Ubícanos</h1>} />
-        {/* Página de contáctanos */}
         <Route path="/contact" element={<Contact />} />
-        {/* Página de administración */}
         <Route path="/admin" element={<AdminPanel />} />
       </Routes>
 
-      {/* Pie de página */}
-      <Footer />
+      {/* Mostrar Footer solo si no estamos en /admin */}
+      {!hideNavbarAndFooter && <Footer />}
+    </>
+  );
+}
+
+// Wrapper para agregar Router
+function AppWithRouter() {
+  return (
+    <Router>
+      <App />
     </Router>
   );
 }
 
-export default App;
+export default AppWithRouter;
