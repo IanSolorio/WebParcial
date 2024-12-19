@@ -14,19 +14,11 @@
     "bootstrap": "^5.3.3",
     "firebase": "^11.1.0",
     "react": "^18.3.1",
-<<<<<<< HEAD
     "react-dom": "^18.3.1",
+    "react-icons": "^5.4.0",
     "react-marquee-slider": "^1.1.5",
     "react-router-dom": "^7.0.2",
     "react-tiktok-embed": "^1.0.0"
-=======
-    "react-bootstrap": "^2.10.7",
-    "react-dom": "^18.3.1",
-    "react-icons": "^5.4.0",
-    "react-router-dom": "^7.0.2",
-    "sweetalert2": "^11.15.2",
-    "uuid": "^11.0.3"
->>>>>>> e284559edd2e0bc57b5d09e942ce1474f67e2554
   },
   "devDependencies": {
     "@eslint/js": "^9.15.0",
