@@ -1,5 +1,6 @@
 import React from "react";
 import img from "../assets/image/409395599_320815934213044_2490934735527099993_n.jpg";
+import "../css/Principal.css";
 
 const Content = () => {
   return (

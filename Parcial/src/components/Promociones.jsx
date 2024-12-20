@@ -1,5 +1,6 @@
 import React from 'react';
 import Marquee from 'react-marquee-slider';
+import "../css/Principal.css";
 
 const Promotions = () => {
   const promotions = [

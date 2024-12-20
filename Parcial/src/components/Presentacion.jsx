@@ -1,6 +1,7 @@
 import React from "react";
 import Fondo from "../assets/image/fondo-papel-tapiz-vintage_53876-25249.jpg"; // Importar la imagen
 import T1 from "../assets/image/tacos-8184634_1280.jpg"; // Importar la imagen
+import "../css/Principal.css";
 
 const Presentacion = () => {
   return (
