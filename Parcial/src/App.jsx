@@ -14,6 +14,8 @@ import Ubicanos from "./pages/Ubicanos";
 import Producto from "./pages/Producto";
 import Carrito from "./components/Carrito";
 import CartButton from "./components/CartButton"; 
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
 function App() {
   const [isCartOpen, setIsCartOpen] = useState(false); 

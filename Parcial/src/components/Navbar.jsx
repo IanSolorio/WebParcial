@@ -9,7 +9,7 @@ import {
   faWhatsapp,
 } from "@fortawesome/free-brands-svg-icons";
 import logo from "../assets/image/LogoSinFondo.png";
-import LoginModal from "./LoginModal"; // Importar el componente del modal de login
+import LoginModal from "./LoginModal";
 
 const Navbar = () => {
   const [openLoginModal, setOpenLoginModal] = useState(false);
@@ -39,7 +39,7 @@ const Navbar = () => {
           <span className="navbar-toggler-icon"></span>
         </button>
 
-        {/* Links de Navegación */}
+        {/* Contenido de navegación */}
         <div className="collapse navbar-collapse" id="navbarContent">
           <ul className="navbar-nav mx-auto mb-2 mb-lg-0">
             <li className="nav-item">
@@ -69,11 +69,55 @@ const Navbar = () => {
             </li>
           </ul>
 
+          {/* Redes sociales */}
+          <div className="d-flex align-items-center me-3">
+            <a
+              href="https://www.facebook.com"
+              className="text-dark mx-2"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FontAwesomeIcon icon={faFacebook} size="lg" />
+            </a>
+            <a
+              href="https://twitter.com"
+              className="text-dark mx-2"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FontAwesomeIcon icon={faTwitter} size="lg" />
+            </a>
+            <a
+              href="https://www.tiktok.com"
+              className="text-dark mx-2"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FontAwesomeIcon icon={faTiktok} size="lg" />
+            </a>
+            <a
+              href="https://www.instagram.com"
+              className="text-dark mx-2"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FontAwesomeIcon icon={faInstagram} size="lg" />
+            </a>
+            <a
+              href="https://wa.me"
+              className="text-dark mx-2"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FontAwesomeIcon icon={faWhatsapp} size="lg" />
+            </a>
+          </div>
+
           {/* Botón de LOGIN */}
           <button
             className="btn btn-dark rounded-pill px-4"
             style={{ fontWeight: "bold" }}
-            onClick={() => setOpenLoginModal(true)} // Abrir el modal
+            onClick={() => setOpenLoginModal(true)}
           >
             LOGIN
           </button>
@@ -83,7 +127,7 @@ const Navbar = () => {
       {/* Modal de Login */}
       <LoginModal
         open={openLoginModal}
-        onClose={() => setOpenLoginModal(false)} // Cerrar el modal
+        onClose={() => setOpenLoginModal(false)}
       />
     </nav>
   );
