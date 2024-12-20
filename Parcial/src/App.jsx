@@ -82,7 +82,7 @@ function App() {
           }
         />
 
-        {/* Ruta para AdminPanel sin Navbar ni Footer */}
+        {/* Ruta para AdminPanel */}
         <Route path="/admin" element={<AdminPanel />} />
         <Route path="/crearproducto" element={<CreateProductView />}></Route>
         <Route path="/editarproducto/:id" element={<EditProductView />}></Route>

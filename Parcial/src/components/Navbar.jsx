@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -9,8 +9,11 @@ import {
   faWhatsapp,
 } from "@fortawesome/free-brands-svg-icons";
 import logo from "../assets/image/LogoSinFondo.png";
+import LoginModal from "./LoginModal"; // Importar el componente del modal de login
 
 const Navbar = () => {
+  const [openLoginModal, setOpenLoginModal] = useState(false);
+
   return (
     <nav className="navbar navbar-expand-lg bg-white border-bottom shadow-sm">
       <div className="container">
@@ -66,62 +69,22 @@ const Navbar = () => {
             </li>
           </ul>
 
-          {/* Iconos de redes sociales, carrito de compras y botón derecho */}
-          <div className="d-flex align-items-center">
-            {/* Redes Sociales */}
-            <div className="me-3">
-              <a
-                href="https://facebook.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-dark me-2"
-              >
-                <FontAwesomeIcon icon={faFacebook} size="lg" />
-              </a>
-              <a
-                href="https://twitter.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-dark me-2"
-              >
-                <FontAwesomeIcon icon={faTwitter} size="lg" />
-              </a>
-              <a
-                href="https://www.tiktok.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-dark me-2"
-              >
-                <FontAwesomeIcon icon={faTiktok} size="lg" />
-              </a>
-              <a
-                href="https://instagram.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-dark me-2"
-              >
-                <FontAwesomeIcon icon={faInstagram} size="lg" />
-              </a>
-              <a
-                href="https://wa.me/529981234567"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-dark"
-              >
-                <FontAwesomeIcon icon={faWhatsapp} size="lg" />
-              </a>
-            </div>
-            {/* Botón adicional */}
-            <Link
-              to="/buscar"
-              className="btn btn-dark rounded-pill px-4"
-              style={{ fontWeight: "bold" }}
-            >
-              FIND A CHIPOTLE
-            </Link>
-          </div>
+          {/* Botón de LOGIN */}
+          <button
+            className="btn btn-dark rounded-pill px-4"
+            style={{ fontWeight: "bold" }}
+            onClick={() => setOpenLoginModal(true)} // Abrir el modal
+          >
+            LOGIN
+          </button>
         </div>
       </div>
+
+      {/* Modal de Login */}
+      <LoginModal
+        open={openLoginModal}
+        onClose={() => setOpenLoginModal(false)} // Cerrar el modal
+      />
     </nav>
   );
 };

@@ -13,12 +13,12 @@ const SidebarAdmin = () => {
       {/* Perfil del usuario */}
       <div className="text-center py-4">
         <img
-          src="https://i.pravatar.cc/150?u=admin"
+          src="src/assets/image/omen.jpg"
           alt="Admin"
           className="rounded-circle mb-2"
           style={{ width: "80px", height: "80px" }}
         />
-        <h5 className="mb-0">Karthi Madesh</h5>
+        <h5 className="mb-0">Ian Solorio</h5>
         <p className="text-muted mb-0" style={{ fontSize: "0.9rem" }}>
           Admin
         </p>
