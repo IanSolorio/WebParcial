@@ -169,10 +169,10 @@ const Producto = () => {
               <Box>
                 {[
                   "Todas",
-                  "Promociones ",
+                  "Promociones",
                   "Tacos",
-                  "Burritos",
-                  "Quesadillas",
+                  "Nachos",
+                  "Quesadilla",
                   "Bebidas",
                 ].map((category) => (
                   <Typography
