@@ -9,6 +9,7 @@ import Content from "./components/Content";
 import AdminPanel from "./views/AdminPanel";
 import Conocenos from "./pages/Conocenos";
 import EditProductView from "./views/EditProducto";
+import Ubicanos from "./pages/Ubicanos";
 
 function App() {
   return (
@@ -53,7 +54,7 @@ function App() {
           element={
             <>
               <Navbar />
-              <h1>Ubícanos</h1>
+              <Ubicanos />
               <Footer />
             </>
           }
