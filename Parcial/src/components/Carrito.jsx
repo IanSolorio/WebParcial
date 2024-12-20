@@ -66,7 +66,7 @@ const Carrito = ({ open, toggleCart }) => {
                     {product.name}
                   </Typography>
                   <Typography variant="body2" sx={{ color: "#a52a2a" }}>
-                    ${product.price.toFixed(2)}
+                    ${Number(product.precio)}
                   </Typography>
                 </CardContent>
                 <CardActions>

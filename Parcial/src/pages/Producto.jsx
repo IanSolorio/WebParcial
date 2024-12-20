@@ -13,6 +13,7 @@ import {
   Paper,
 } from "@mui/material";
 import { getProductos } from "../services/ProductoService";
+import Swal from "sweetalert2";
 
 const Producto = () => {
   const [priceRange, setPriceRange] = useState([0, 140]);
@@ -54,9 +55,9 @@ const Producto = () => {
 
   // Maneja la búsqueda de productos
   const handleSearchChange = (event) => {
-    const text = event.target.value.toLowerCase();
+    const text = event.target.value.toLowerCase(); // Convierte el texto a minúsculas
     setSearchText(text);
-    filterProducts(priceRange, selectedCategory, text);
+    filterProducts(priceRange, selectedCategory, text); // Aplica el filtro actualizado
   };
 
   // Filtra los productos por precio, categoría y texto de búsqueda
@@ -77,7 +78,13 @@ const Producto = () => {
     const cart = JSON.parse(localStorage.getItem("cart")) || []; // Recuperar carrito actual
     const updatedCart = [...cart, product]; // Añadir nuevo producto
     localStorage.setItem("cart", JSON.stringify(updatedCart)); // Guardar en localStorage
-    alert(`${product.nombre} añadido al carrito.`);
+    Swal.fire({
+      title: "¡Producto añadido!",
+      text: `${product.nombre} se agregó al carrito con éxito.`,
+      icon: "success",
+      confirmButtonText: "Aceptar",
+      confirmButtonColor: "#a52a2a",
+    });
   };
 
   return (
