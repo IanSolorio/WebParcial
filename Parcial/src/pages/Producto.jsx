@@ -167,25 +167,30 @@ const Producto = () => {
                 Categorías
               </Typography>
               <Box>
-                {["Todas", "Bebidas", "Tacos", "Burritos", "Quesadillas"].map(
-                  (category) => (
-                    <Typography
-                      key={category}
-                      onClick={() => handleCategoryClick(category)}
-                      sx={{
-                        color:
-                          category === selectedCategory ? "#4a1f1f" : "#a52a2a",
-                        fontWeight:
-                          category === selectedCategory ? "bold" : "normal",
-                        cursor: "pointer",
-                        marginBottom: "8px",
-                        "&:hover": { textDecoration: "underline" },
-                      }}
-                    >
-                      {category}
-                    </Typography>
-                  )
-                )}
+                {[
+                  "Todas",
+                  "Promociones ",
+                  "Tacos",
+                  "Burritos",
+                  "Quesadillas",
+                  "Bebidas",
+                ].map((category) => (
+                  <Typography
+                    key={category}
+                    onClick={() => handleCategoryClick(category)}
+                    sx={{
+                      color:
+                        category === selectedCategory ? "#4a1f1f" : "#a52a2a",
+                      fontWeight:
+                        category === selectedCategory ? "bold" : "normal",
+                      cursor: "pointer",
+                      marginBottom: "8px",
+                      "&:hover": { textDecoration: "underline" },
+                    }}
+                  >
+                    {category}
+                  </Typography>
+                ))}
               </Box>
             </Box>
           </Paper>
