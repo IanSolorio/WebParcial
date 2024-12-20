@@ -50,7 +50,7 @@ const Carrito = ({ open, toggleCart }) => {
               <Card
                 sx={{
                   backgroundColor: "#fff",
-                  border: "1px  #a52a2a",
+                  border: "1px solid #a52a2a",
                   borderRadius: "8px",
                   boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
                 }}
@@ -58,15 +58,15 @@ const Carrito = ({ open, toggleCart }) => {
                 <CardMedia
                   component="img"
                   height="140"
-                  image={product.image}
-                  alt={product.name}
+                  image={product.imagen} // Usar "imagen" en lugar de "image"
+                  alt={product.nombre} // Usar "nombre" en lugar de "name"
                 />
                 <CardContent>
                   <Typography variant="h6" sx={{ color: "#4a1f1f" }}>
-                    {product.name}
+                    {product.nombre} {/* Usar "nombre" */}
                   </Typography>
                   <Typography variant="body2" sx={{ color: "#a52a2a" }}>
-                    ${Number(product.precio)}
+                    ${Number(product.precio).toFixed(2)} {/* Formato del precio */}
                   </Typography>
                 </CardContent>
                 <CardActions>
@@ -96,4 +96,3 @@ const Carrito = ({ open, toggleCart }) => {
 };
 
 export default Carrito;
-
