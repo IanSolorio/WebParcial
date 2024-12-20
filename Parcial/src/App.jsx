@@ -13,7 +13,7 @@ import CreateProductView from "./views/CreateProductView";
 import Ubicanos from "./pages/Ubicanos";
 import Producto from "./pages/Producto";
 import Carrito from "./components/Carrito";
-import CartButton from "./js/CartButton"; 
+import CartButton from "./components/CartButton"; 
 
 function App() {
   const [isCartOpen, setIsCartOpen] = useState(false); 
