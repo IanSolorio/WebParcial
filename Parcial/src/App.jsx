@@ -10,7 +10,7 @@ import AdminPanel from "./views/AdminPanel";
 import Conocenos from "./pages/Conocenos";
 import EditProductView from "./views/EditProducto";
 import CreateProductView from "./views/CreateProductView";
-
+import Ubicanos from "./pages/Ubicanos";
 function App() {
   return (
     <Router>
@@ -54,7 +54,7 @@ function App() {
           element={
             <>
               <Navbar />
-              <h1>Ubícanos</h1>
+              <Ubicanos/>
               <Footer />
             </>
           }

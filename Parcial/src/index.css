@@ -125,21 +125,15 @@ form textarea:focus {
   /* Gris oscuro para el texto */
 }
 
-
-
-
 .top-section .content-box {
   margin-right: 20px;
   /* Espaciado entre el texto y el video */
 }
 
-
-
-
 .section-header h2 {
   font-size: 28px;
   font-weight: bold;
-  color: #8B0000;
+  color: #8b0000;
   /* Marrón oscuro */
 }
 
