@@ -18,17 +18,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
 function App() {
-  const [isCartOpen, setIsCartOpen] = useState(false); 
 
-  const toggleCart = (state) => {
-    setIsCartOpen(state);
-  };
 
   return (
     <Router>
-      <CartButton toggleCart={toggleCart} />
-      <Carrito open={isCartOpen} toggleCart={toggleCart} />
-
       <Routes>
         {/* Rutas Públicas con Navbar y Footer */}
         <Route

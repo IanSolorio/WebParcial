@@ -5,31 +5,20 @@ import { deleteProductoId, getProductos } from "../services/ProductoService";
 import ProductsTable from "../components/ProductTableAdmin";
 
 const ListView = () => {
-  const [productos, setProductos] = useState([]); // Estado para guardar los productos
-  const [loading, setLoading] = useState(true); // Indicador de carga
-
-  // Cargar productos al montar el componente
+  const [productos, setProductos] = useState([]); 
   useEffect(() => {
     const fetchProductos = async () => {
       try {
-        const data = await getProductos(); // Llama a tu servicio
+        const data = await getProductos(); 
         setProductos(data); // Guarda los productos en el estado
       } catch (error) {
         Swal.fire("Error", "No se pudieron cargar los productos", "error");
-      } finally {
-        setLoading(false); // Finaliza el estado de carga
       }
     };
-
     fetchProductos();
-  }, []); // El efecto se ejecuta solo al montar el componente
+  }, []); 
 
-  // Mostrar un indicador de carga si los datos están siendo obtenidos
-  if (loading) {
-    return <p>Cargando productos...</p>;
-  }
-
-  // Manejar la eliminación de un producto
+  // Eliminacion de un Producto
   const handleDelete = async (id) => {
     const confirm = await Swal.fire({
       title: "¿Estás seguro?",

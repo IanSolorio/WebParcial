@@ -3,6 +3,7 @@ import React from "react";
 import { FaHome, FaUserGraduate, FaSignOutAlt } from "react-icons/fa";
 import "../css/SidebarAdmin.css";
 import { Link} from "react-router-dom";
+import { MdFastfood, MdLocalPizza, MdRestaurant } from "react-icons/md";
 
 const SidebarAdmin = () => {
   return (
@@ -30,14 +31,14 @@ const SidebarAdmin = () => {
           to="/admin"
           className="nav-link text-white d-flex align-items-center mb-2"
         >
-          <FaHome className="me-2" />
+          <MdRestaurant className="me-2" />
           <span>Producto</span>
         </Link>
         <Link
           to="/crearproducto"
           className="nav-link text-white d-flex align-items-center mb-2"
         >
-          <FaUserGraduate className="me-2" />
+          <MdFastfood className="me-2" />
           <span>Crear Producto</span>
         </Link>
       </nav>

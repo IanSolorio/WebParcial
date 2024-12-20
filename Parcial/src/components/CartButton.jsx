@@ -7,7 +7,7 @@ const CartButton = ({ toggleCart }) => {
       style={{
         position: "fixed",
         top: "15px",
-        right: "20px", // Ajusta este valor para mover más a la izquierda
+        right: "20px", 
         marginRight: "100px",
         zIndex: 1000,
         padding: "10px 20px",

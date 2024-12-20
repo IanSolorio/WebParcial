@@ -10,10 +10,17 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import logo from "../assets/image/LogoSinFondo.png";
 import LoginModal from "./LoginModal";
+import Carrito from "./Carrito";
+import CartButton from "./CartButton";
 
 const Navbar = () => {
   const [openLoginModal, setOpenLoginModal] = useState(false);
+  const [isCartOpen, setIsCartOpen] = useState(false); 
 
+  const toggleCart = (state) => {
+    setIsCartOpen(state);
+  };
+  
   return (
     <nav className="navbar navbar-expand-lg bg-white border-bottom shadow-sm">
       <div className="container">
@@ -121,6 +128,8 @@ const Navbar = () => {
           >
             LOGIN
           </button>
+          <CartButton toggleCart={toggleCart} />
+          <Carrito open={isCartOpen} toggleCart={toggleCart} />
         </div>
       </div>
 

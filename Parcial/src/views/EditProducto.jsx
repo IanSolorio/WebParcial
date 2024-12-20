@@ -15,7 +15,7 @@ const EditProductView = () => {
     descripcion: "",
     categoria: "",
     precio: 0,
-    imagen: "https://via.placeholder.com/150", // URL por defecto para la imagen
+    imagen: "https://via.placeholder.com/150",
   });
 
   const { id } = useParams(); // ID del producto
@@ -42,7 +42,7 @@ const EditProductView = () => {
     const { nombre, descripcion, categoria, precio } = values;
 
     // Validación básica
-    if (!nombre || !descripcion || !categoria || precio <= 0) {
+    if (!nombre || !descripcion || !categoria || !precio) {
       Swal.fire({
         title: "Error",
         text: "Todos los campos son obligatorios.",
