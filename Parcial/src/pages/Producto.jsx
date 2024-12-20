@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Box,
   TextField,
@@ -12,73 +12,33 @@ import {
   CardActions,
   Paper,
 } from "@mui/material";
-
-// Lista inicial de productos
-const allProducts = [
-  {
-    id: 1,
-    name: "Taco al Pastor",
-    price: 10,
-    category: "Tacos",
-    descripcion: "Historial",
-    image: "/path/to/taco.jpg",
-  },
-  {
-    id: 2,
-    name: "Burrito de Pollo",
-    price: 12,
-    category: "Burritos",
-    image: "/path/to/burrito.jpg",
-  },
-  {
-    id: 3,
-    name: "Quesadilla de Queso",
-    price: 8,
-    category: "Quesadillas",
-    image: "/path/to/quesadilla.jpg",
-  },
-  {
-    id: 4,
-    name: "Chilaquiles Verdes",
-    price: 15,
-    category: "Quesadillas",
-    image: "/path/to/chilaquiles.jpg",
-  },
-  {
-    id: 5,
-    name: "Tostada de Tinga",
-    price: 7,
-    category: "Tacos",
-    image: "/path/to/tostada.jpg",
-  },
-  {
-    id: 6,
-    name: "Enchiladas Rojas",
-    price: 18,
-    category: "Tacos",
-    image: "/path/to/enchiladas.jpg",
-  },
-  {
-    id: 7,
-    name: "Nachos con Guacamole",
-    price: 10,
-    category: "Burritos",
-    image: "/path/to/nachos.jpg",
-  },
-  {
-    id: 8,
-    name: "Pozole Rojo",
-    price: 20,
-    category: "Bebidas",
-    image: "/path/to/pozole.jpg",
-  },
-];
+import { getProductos } from "../services/ProductoService";
 
 const Producto = () => {
   const [priceRange, setPriceRange] = useState([0, 140]);
   const [selectedCategory, setSelectedCategory] = useState("Todas");
   const [searchText, setSearchText] = useState("");
-  const [filteredProducts, setFilteredProducts] = useState(allProducts);
+  const [allProducts, setAllProducts] = useState([]); // Productos obtenidos de la API
+  const [filteredProducts, setFilteredProducts] = useState([]); // Productos filtrados
+
+  // Carga los productos desde la API
+  useEffect(() => {
+    const fetchProductos = async () => {
+      try {
+        const productos = await getProductos();
+        // Valida que todos los productos tengan `precio` como número
+        const validatedProducts = productos.map((product) => ({
+          ...product,
+          precio: Number(product.precio), // Asegura que precio sea un número
+        }));
+        setAllProducts(validatedProducts);
+        setFilteredProducts(validatedProducts);
+      } catch (error) {
+        console.error("Error al cargar los productos:", error);
+      }
+    };
+    fetchProductos();
+  }, []);
 
   // Actualiza el rango de precios y filtra productos
   const handleSliderChange = (event, newValue) => {
@@ -103,10 +63,10 @@ const Producto = () => {
   const filterProducts = (priceRange, category, text) => {
     const filtered = allProducts.filter((product) => {
       const isWithinPrice =
-        product.price >= priceRange[0] && product.price <= priceRange[1];
+        product.precio >= priceRange[0] && product.precio <= priceRange[1];
       const isInCategory =
-        category === "Todas" || product.category === category;
-      const matchesSearch = product.name.toLowerCase().includes(text);
+        category === "Todas" || product.categoria === category;
+      const matchesSearch = product.nombre.toLowerCase().includes(text);
       return isWithinPrice && isInCategory && matchesSearch;
     });
     setFilteredProducts(filtered);
@@ -117,7 +77,7 @@ const Producto = () => {
     const cart = JSON.parse(localStorage.getItem("cart")) || []; // Recuperar carrito actual
     const updatedCart = [...cart, product]; // Añadir nuevo producto
     localStorage.setItem("cart", JSON.stringify(updatedCart)); // Guardar en localStorage
-    alert(`${product.name} añadido al carrito.`);
+    alert(`${product.nombre} añadido al carrito.`);
   };
 
   return (
@@ -245,18 +205,19 @@ const Producto = () => {
                     <CardMedia
                       component="img"
                       height="140"
-                      image={product.image}
-                      alt={product.name}
+                      image={product.imagen}
+                      alt={product.nombre}
                     />
                     <CardContent>
                       <Typography variant="h6" sx={{ color: "#4a1f1f" }}>
-                        {product.name}
+                        {product.nombre}
                       </Typography>
-                      <Typography variant="0" sx={{ color: "#4a1f1f" }}>
+                      <Typography variant="body2" sx={{ color: "#4a1f1f" }}>
                         {product.descripcion}
                       </Typography>
                       <Typography variant="body2" sx={{ color: "#a52a2a" }}>
-                        ${product.price.toFixed(2)}
+                        {/* Asegura que `precio` sea un número antes de usar `toFixed` */}
+                        ${Number(product.precio).toFixed(2)}
                       </Typography>
                     </CardContent>
                     <CardActions>
