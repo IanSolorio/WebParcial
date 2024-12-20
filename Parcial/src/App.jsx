@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -12,10 +12,21 @@ import EditProductView from "./views/EditProducto";
 import CreateProductView from "./views/CreateProductView";
 import Ubicanos from "./pages/Ubicanos";
 import Producto from "./pages/Producto";
+import Carrito from "./components/Carrito";
+import CartButton from "./js/CartButton"; 
+
 function App() {
+  const [isCartOpen, setIsCartOpen] = useState(false); 
+
+  const toggleCart = (state) => {
+    setIsCartOpen(state);
+  };
+
   return (
     <Router>
-      {/* Layout General */}
+      <CartButton toggleCart={toggleCart} />
+      <Carrito open={isCartOpen} toggleCart={toggleCart} />
+
       <Routes>
         {/* Rutas Públicas con Navbar y Footer */}
         <Route

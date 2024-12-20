@@ -16,48 +16,57 @@ import {
 // Lista inicial de productos
 const allProducts = [
   {
+    id: 1,
     name: "Taco al Pastor",
     price: 10,
     category: "Tacos",
+    descripcion: "Historial",
     image: "/path/to/taco.jpg",
   },
   {
+    id: 2,
     name: "Burrito de Pollo",
     price: 12,
     category: "Burritos",
     image: "/path/to/burrito.jpg",
   },
   {
+    id: 3,
     name: "Quesadilla de Queso",
     price: 8,
     category: "Quesadillas",
     image: "/path/to/quesadilla.jpg",
   },
   {
+    id: 4,
     name: "Chilaquiles Verdes",
     price: 15,
     category: "Quesadillas",
     image: "/path/to/chilaquiles.jpg",
   },
   {
+    id: 5,
     name: "Tostada de Tinga",
     price: 7,
     category: "Tacos",
     image: "/path/to/tostada.jpg",
   },
   {
+    id: 6,
     name: "Enchiladas Rojas",
     price: 18,
     category: "Tacos",
     image: "/path/to/enchiladas.jpg",
   },
   {
+    id: 7,
     name: "Nachos con Guacamole",
     price: 10,
     category: "Burritos",
     image: "/path/to/nachos.jpg",
   },
   {
+    id: 8,
     name: "Pozole Rojo",
     price: 20,
     category: "Bebidas",
@@ -66,10 +75,10 @@ const allProducts = [
 ];
 
 const Producto = () => {
-  const [priceRange, setPriceRange] = useState([0, 140]); // Estado para el rango de precios
-  const [selectedCategory, setSelectedCategory] = useState("Todas"); // Estado para la categoría seleccionada
-  const [searchText, setSearchText] = useState(""); // Estado para el texto de búsqueda
-  const [filteredProducts, setFilteredProducts] = useState(allProducts); // Productos filtrados
+  const [priceRange, setPriceRange] = useState([0, 140]);
+  const [selectedCategory, setSelectedCategory] = useState("Todas");
+  const [searchText, setSearchText] = useState("");
+  const [filteredProducts, setFilteredProducts] = useState(allProducts);
 
   // Actualiza el rango de precios y filtra productos
   const handleSliderChange = (event, newValue) => {
@@ -101,6 +110,14 @@ const Producto = () => {
       return isWithinPrice && isInCategory && matchesSearch;
     });
     setFilteredProducts(filtered);
+  };
+
+  // Añade un producto al carrito
+  const addToCart = (product) => {
+    const cart = JSON.parse(localStorage.getItem("cart")) || []; // Recuperar carrito actual
+    const updatedCart = [...cart, product]; // Añadir nuevo producto
+    localStorage.setItem("cart", JSON.stringify(updatedCart)); // Guardar en localStorage
+    alert(`${product.name} añadido al carrito.`);
   };
 
   return (
@@ -142,8 +159,8 @@ const Producto = () => {
               backgroundColor: "#ffffff",
               borderRadius: "8px",
               boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
-              position: "sticky", // Hace que se quede fijo
-              top: "20px", // Espaciado desde la parte superior
+              position: "sticky",
+              top: "20px",
             }}
           >
             {/* Filtro por precio */}
@@ -235,6 +252,9 @@ const Producto = () => {
                       <Typography variant="h6" sx={{ color: "#4a1f1f" }}>
                         {product.name}
                       </Typography>
+                      <Typography variant="0" sx={{ color: "#4a1f1f" }}>
+                        {product.descripcion}
+                      </Typography>
                       <Typography variant="body2" sx={{ color: "#a52a2a" }}>
                         ${product.price.toFixed(2)}
                       </Typography>
@@ -247,6 +267,7 @@ const Producto = () => {
                           backgroundColor: "#a52a2a",
                           "&:hover": { backgroundColor: "#4a1f1f" },
                         }}
+                        onClick={() => addToCart(product)} // Agregar al carrito
                       >
                         Añadir al Carrito
                       </Button>

@@ -1,8 +1,14 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFacebook, faTwitter, faTiktok, faInstagram, faWhatsapp } from '@fortawesome/free-brands-svg-icons';
-import logo from '../assets/image/LogoSinFondo.png';
+import React from "react";
+import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faFacebook,
+  faTwitter,
+  faTiktok,
+  faInstagram,
+  faWhatsapp,
+} from "@fortawesome/free-brands-svg-icons";
+import logo from "../assets/image/LogoSinFondo.png";
 
 const Navbar = () => {
   return (
@@ -13,7 +19,7 @@ const Navbar = () => {
           <img
             src={logo}
             alt="Logo"
-            style={{ width: '50px', height: '50px', marginRight: '10px' }}
+            style={{ width: "50px", height: "50px", marginRight: "10px" }}
           />
         </Link>
 
@@ -60,29 +66,56 @@ const Navbar = () => {
             </li>
           </ul>
 
-          {/* Iconos de redes sociales y botón derecho */}
+          {/* Iconos de redes sociales, carrito de compras y botón derecho */}
           <div className="d-flex align-items-center">
+            {/* Redes Sociales */}
             <div className="me-3">
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-dark me-2">
+              <a
+                href="https://facebook.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-dark me-2"
+              >
                 <FontAwesomeIcon icon={faFacebook} size="lg" />
               </a>
-              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-dark me-2">
+              <a
+                href="https://twitter.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-dark me-2"
+              >
                 <FontAwesomeIcon icon={faTwitter} size="lg" />
               </a>
-              <a href="https://www.tiktok.com" target="_blank" rel="noopener noreferrer" className="text-dark me-2">
+              <a
+                href="https://www.tiktok.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-dark me-2"
+              >
                 <FontAwesomeIcon icon={faTiktok} size="lg" />
               </a>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-dark me-2">
+              <a
+                href="https://instagram.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-dark me-2"
+              >
                 <FontAwesomeIcon icon={faInstagram} size="lg" />
               </a>
-              <a href="https://wa.me/529981234567" target="_blank" rel="noopener noreferrer" className="text-dark">
+              <a
+                href="https://wa.me/529981234567"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-dark"
+              >
                 <FontAwesomeIcon icon={faWhatsapp} size="lg" />
               </a>
             </div>
+            {/* Botón adicional */}
             <Link
               to="/buscar"
               className="btn btn-dark rounded-pill px-4"
-              style={{ fontWeight: 'bold' }}
+              style={{ fontWeight: "bold" }}
             >
               FIND A CHIPOTLE
             </Link>
