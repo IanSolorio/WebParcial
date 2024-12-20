@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
 import Swal from "sweetalert2"; // Para manejar alertas de error
 import { getProductos } from "../services/ProductoService";

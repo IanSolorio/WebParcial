@@ -1,81 +1,72 @@
+/* eslint-disable react/react-in-jsx-scope */
 /* eslint-disable react/prop-types */
-import React from "react";
-
-const FormProduct = ({ formValues, handleChange, handleImageChange, handleSubmit }) => {
+const FormProduct = ({ handleValues, handleImage, handleSubmit, values, title }) => {
   return (
-    <form onSubmit={handleSubmit}>
-      <div className="mb-3">
-        <label htmlFor="nombre" className="form-label">
-          Nombre
-        </label>
-        <input
-          type="text"
-          className="form-control"
-          id="nombre"
-          name="nombre"
-          value={formValues.nombre}
-          onChange={handleChange}
-          required
-        />
-      </div>
-      <div className="mb-3">
-        <label htmlFor="descripcion" className="form-label">
-          Descripción
-        </label>
-        <textarea
-          className="form-control"
-          id="descripcion"
-          name="descripcion"
-          value={formValues.descripcion}
-          onChange={handleChange}
-          required
-        />
-      </div>
-      <div className="mb-3">
-        <label htmlFor="categoria" className="form-label">
-          Categoría
-        </label>
-        <input
-          type="text"
-          className="form-control"
-          id="categoria"
-          name="categoria"
-          value={formValues.categoria}
-          onChange={handleChange}
-          required
-        />
-      </div>
-      <div className="mb-3">
-        <label htmlFor="precio" className="form-label">
-          Precio
-        </label>
-        <input
-          type="number"
-          className="form-control"
-          id="precio"
-          name="precio"
-          value={formValues.precio}
-          onChange={handleChange}
-          required
-        />
-      </div>
-      <div className="mb-3">
-        <label htmlFor="imagen" className="form-label">
-          Imagen
-        </label>
-        <input
-          type="file"
-          className="form-control"
-          id="imagen"
-          name="imagen"
-          onChange={handleImageChange}
-          required
-        />
-      </div>
-      <button type="submit" className="btn btn-primary">
-        Crear Producto
-      </button>
-    </form>
+    <div className="container pt-4">
+      <form onSubmit={handleSubmit}>
+        <div className="mb-3">
+          <h2>{title}</h2>
+          {/* Nombre del producto */}
+          <label htmlFor="nombre">Nombre</label>
+          <input
+            type="text"
+            className="form-control"
+            id="nombre"
+            placeholder="Ej. Tacos al pastor"
+            name="nombre"
+            value={values.nombre}
+            onChange={handleValues}
+          />
+        </div>
+        {/* Descripción del producto */}
+        <div className="mb-3">
+          <label htmlFor="descripcion">Descripción</label>
+          <textarea
+            type="text"
+            className="form-control"
+            id="descripcion"
+            placeholder="Ej. Deliciosos tacos con ingredientes frescos"
+            name="descripcion"
+            value={values.descripcion}
+            onChange={handleValues}
+          />
+        </div>
+        {/* Categoría del producto */}
+        <div className="mb-3">
+          <label htmlFor="categoria">Categoría</label>
+          <input
+            type="text"
+            className="form-control"
+            id="categoria"
+            placeholder="Ej. Tacos"
+            name="categoria"
+            value={values.categoria}
+            onChange={handleValues}
+          />
+        </div>
+        {/* Precio del producto */}
+        <div className="mb-3">
+          <label htmlFor="precio">Precio</label>
+          <input
+            type="number"
+            className="form-control"
+            id="precio"
+            placeholder="0.00"
+            name="precio"
+            value={values.precio}
+            onChange={handleValues}
+          />
+        </div>
+        {/* Imagen del producto */}
+        <div>
+          <label className="form-label" htmlFor="imagen">
+            Imagen
+          </label>
+          <input type="file" className="form-control" onChange={handleImage} />
+        </div>
+        <button className="btn btn-primary btn-lg mt-3">Guardar</button>
+      </form>
+    </div>
   );
 };
 
