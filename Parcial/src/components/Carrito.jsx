@@ -23,12 +23,11 @@ const Carrito = ({ open, toggleCart }) => {
     const cart = JSON.parse(localStorage.getItem("cart")) || [];
     setCartItems(cart);
 
-    // Calcular el precio total correctamente, considerando la cantidad de productos
     const calculatedTotal = cart.reduce(
       (acc, product) => acc + product.precio,
       0
     );
-    setTotalPrice(calculatedTotal); // Esto debe ser el precio total de los productos
+    setTotalPrice(calculatedTotal); 
   }, [open]);
 
   const removeFromCart = (id) => {
@@ -38,11 +37,11 @@ const Carrito = ({ open, toggleCart }) => {
   };
 
   const handleFinalizarCompra = () => {
-    setIsModalOpen(true); // Abrir el modal
+    setIsModalOpen(true); 
   };
 
   const handleCloseModal = () => {
-    setIsModalOpen(false); // Cerrar el modal
+    setIsModalOpen(false); 
   };
 
   return (
@@ -105,7 +104,7 @@ const Carrito = ({ open, toggleCart }) => {
                         variant="body2"
                         sx={{ color: "#a52a2a", fontSize: "0.8rem" }}
                       >
-                        1 × ${Number(product.precio).toFixed(2)}
+                        1 × S/.{Number(product.precio).toFixed(2)}
                       </Typography>
                     </Box>
                     <Button
@@ -156,12 +155,11 @@ const Carrito = ({ open, toggleCart }) => {
         )}
       </Drawer>
 
-      {/* Modal de Pago */}
       <PaymentModal
         open={isModalOpen}
         handleClose={() => {
-          handleCloseModal(); // Cerrar el modal
-          clearCart(); // Vaciar el carrito
+          handleCloseModal();
+          clearCart(); 
         }}
         productPrice={totalPrice}
       />

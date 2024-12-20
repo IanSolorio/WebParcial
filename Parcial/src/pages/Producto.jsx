@@ -141,8 +141,8 @@ const Producto = () => {
                 }}
               />
               <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-                <Typography>${priceRange[0]}</Typography>
-                <Typography>${priceRange[1]}</Typography>
+                <Typography> S/.{priceRange[0]}</Typography>
+                <Typography> S/.{priceRange[1]}</Typography>
               </Box>
             </Box>
 
@@ -203,7 +203,7 @@ const Producto = () => {
                         {product.descripcion}
                       </Typography>
                       <Typography variant="body2" sx={{ color: "#a52a2a" }}>
-                        ${product.precio.toFixed(2)}
+                      S/.{product.precio.toFixed(2)}
                       </Typography>
                     </CardContent>
                     <CardActions>
