@@ -58,20 +58,36 @@ const putProductoId = async (id, producto) => {
 
 const deleteProductoId = async (id) => {
   try {
+    // Obtener el producto por su ID
     const { data: producto } = await axios.get(`${URL}/productos/${id}`);
-    const { imagen: imageUrl } = producto;
-    await deleteFile(imageUrl);
+    const { imagen: imageStorageUrl } = producto;
 
-    const respuesta = await axios.delete(`${URL}/productos/${id}`);
-    console.log(respuesta);
-    if (respuesta.status === 200) {
-      return respuesta.data;
+    // Validar si hay una URL de imagen antes de intentar eliminarla
+    if (imageStorageUrl) {
+      try {
+        await deleteFile(imageStorageUrl);
+        console.log(`Imagen eliminada correctamente: ${imageStorageUrl}`);
+      } catch (error) {
+        console.error(`Error al eliminar la imagen (${imageStorageUrl}):`, error);
+        throw new Error("No se pudo eliminar la imagen del almacenamiento.");
+      }
     }
-    throw new Error("Error al eliminar el producto");
+
+    // Eliminar el producto
+    const respuesta = await axios.delete(`${URL}/productos/${id}`);
+    if (respuesta.status === 200) {
+      console.log(`Producto eliminado correctamente: ${id}`);
+      return respuesta.data;
+    } else {
+      console.error("Error inesperado al eliminar el producto:", respuesta);
+      throw new Error("No se pudo eliminar el producto.");
+    }
   } catch (error) {
-    throw error;
+    console.error(`Error en deleteProductoId para el ID: ${id}`, error);
+    throw new Error("Ocurrió un error al intentar eliminar el producto.");
   }
 };
+
 
 export {
   getProductos,

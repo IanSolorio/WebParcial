@@ -3,6 +3,9 @@ import FormProduct from "../components/FormProduct";
 import { postProductos } from "../services/ProductoService";
 import { uploadFile } from "../services/storageService";
 import Swal from "sweetalert2";
+import SidebarAdmin from "../components/SidebarAdmin";
+import { useNavigate } from "react-router-dom";
+
 
 const CreateProductView = () => {
   const [formValues, setFormValues] = useState({
@@ -12,6 +15,8 @@ const CreateProductView = () => {
     precio: "",
     imagen: null, // Guardaremos la referencia al archivo seleccionado
   });
+
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -39,6 +44,9 @@ const CreateProductView = () => {
       });
 
       Swal.fire("Éxito", "Producto creado correctamente", "success");
+      
+      // Redireccionar a /admin
+      navigate("/admin");
 
       // Reiniciar el formulario
       setFormValues({
@@ -55,14 +63,15 @@ const CreateProductView = () => {
   };
 
   return (
-    <div>
-      <h1>Crear Producto</h1>
+    <div className="d-flex">
+      <SidebarAdmin/>
       <FormProduct
-        formValues={formValues}
-        handleChange={handleChange}
-        handleImageChange={handleImageChange}
-        handleSubmit={handleSubmit}
-      />
+      values={formValues}
+      onChange={handleChange}
+      onImageChange={handleImageChange}
+      onSubmit={handleSubmit}
+      title="Crear Producto"
+    />
     </div>
   );
 };

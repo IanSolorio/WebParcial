@@ -7,7 +7,6 @@ import { getProductoId, putProductoId } from "../services/ProductoService"; // S
 import FormProduct from "../components/FormProduct"; // Formulario
 import { uploadFile } from "../services/storageService"; // Servicio de subida de archivos
 import SidebarAdmin from "../components/SidebarAdmin";
-
 let imagen; // Variable global para manejar la imagen
 
 const EditProductView = () => {
@@ -109,15 +108,15 @@ const EditProductView = () => {
 
   return (
     <div className="d-flex">
-    <SidebarAdmin />
-    <FormProduct
-      values={values}
-      handleValues={handleValues}
-      handleSubmit={handleSubmit}
-      handleImage={handleImage}
-      title="Editar Producto"
-    />
-  </div>
+      <SidebarAdmin />
+      <FormProduct
+            values={values}
+            onChange={handleValues}
+            onImageChange={handleImage}
+            onSubmit={handleSubmit}
+            title="Editar Producto"
+          />
+    </div>
   );
 };
 

@@ -1,9 +1,9 @@
 /* eslint-disable react/react-in-jsx-scope */
 /* eslint-disable react/prop-types */
-const FormProduct = ({ handleValues, handleImage, handleSubmit, values, title }) => {
+const FormProduct = ({ values, onChange, onImageChange, onSubmit, title }) => {
   return (
     <div className="container pt-4">
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={onSubmit}>
         <div className="mb-3">
           <h2>{title}</h2>
           {/* Nombre del producto */}
@@ -15,7 +15,7 @@ const FormProduct = ({ handleValues, handleImage, handleSubmit, values, title })
             placeholder="Ej. Tacos al pastor"
             name="nombre"
             value={values.nombre}
-            onChange={handleValues}
+            onChange={onChange}
           />
         </div>
         {/* Descripción del producto */}
@@ -28,7 +28,7 @@ const FormProduct = ({ handleValues, handleImage, handleSubmit, values, title })
             placeholder="Ej. Deliciosos tacos con ingredientes frescos"
             name="descripcion"
             value={values.descripcion}
-            onChange={handleValues}
+            onChange={onChange}
           />
         </div>
         {/* Categoría del producto */}
@@ -41,7 +41,7 @@ const FormProduct = ({ handleValues, handleImage, handleSubmit, values, title })
             placeholder="Ej. Tacos"
             name="categoria"
             value={values.categoria}
-            onChange={handleValues}
+            onChange={onChange}
           />
         </div>
         {/* Precio del producto */}
@@ -54,7 +54,7 @@ const FormProduct = ({ handleValues, handleImage, handleSubmit, values, title })
             placeholder="0.00"
             name="precio"
             value={values.precio}
-            onChange={handleValues}
+            onChange={onChange}
           />
         </div>
         {/* Imagen del producto */}
@@ -62,7 +62,7 @@ const FormProduct = ({ handleValues, handleImage, handleSubmit, values, title })
           <label className="form-label" htmlFor="imagen">
             Imagen
           </label>
-          <input type="file" className="form-control" onChange={handleImage} />
+          <input type="file" className="form-control" onChange={onImageChange} />
         </div>
         <button className="btn btn-primary btn-lg mt-3">Guardar</button>
       </form>

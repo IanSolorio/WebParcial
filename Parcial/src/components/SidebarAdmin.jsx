@@ -1,8 +1,10 @@
+/* eslint-disable react/prop-types */
 import React from "react";
-import { FaHome, FaUserGraduate, FaCogs, FaSignOutAlt } from "react-icons/fa";
+import { FaHome, FaUserGraduate, FaSignOutAlt } from "react-icons/fa";
 import "../css/SidebarAdmin.css";
+import { Link} from "react-router-dom";
 
-const SidebarAdmin = ({ onChangeView }) => {
+const SidebarAdmin = () => {
   return (
     <div
       className="sidebar text-white d-flex flex-column"
@@ -24,35 +26,28 @@ const SidebarAdmin = ({ onChangeView }) => {
 
       {/* Menú */}
       <nav className="nav flex-column py-3">
-        <button
-          className="nav-link text-white d-flex align-items-center mb-2 btn"
-          onClick={() => onChangeView("listView")}
+        <Link
+          to="/admin"
+          className="nav-link text-white d-flex align-items-center mb-2"
         >
           <FaHome className="me-2" />
           <span>Producto</span>
-        </button>
-        <button
-          className="nav-link text-white d-flex align-items-center mb-2 btn"
-          onClick={() => onChangeView("createProductView")}
+        </Link>
+        <Link
+          to="/crearproducto"
+          className="nav-link text-white d-flex align-items-center mb-2"
         >
           <FaUserGraduate className="me-2" />
-          <span>Students</span>
-        </button>
-        <button
-          className="nav-link text-white d-flex align-items-center mb-2 btn"
-          onClick={() => onChangeView("settings")}
-        >
-          <FaCogs className="me-2" />
-          <span>Settings</span>
-        </button>
+          <span>Crear Producto</span>
+        </Link>
       </nav>
 
       {/* Logout */}
       <div className="mt-auto text-center py-3 d-flex justify-content-center">
-        <button className="btn btn-outline-light logout-btn">
+        <Link className="btn btn-outline-light logout-btn" to="/">
           <FaSignOutAlt className="me-2" />
           Logout
-        </button>
+        </Link>
       </div>
     </div>
   );

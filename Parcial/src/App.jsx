@@ -9,6 +9,7 @@ import Content from "./components/Content";
 import AdminPanel from "./views/AdminPanel";
 import Conocenos from "./pages/Conocenos";
 import EditProductView from "./views/EditProducto";
+import CreateProductView from "./views/CreateProductView";
 
 function App() {
   return (
@@ -71,6 +72,7 @@ function App() {
 
         {/* Ruta para AdminPanel sin Navbar ni Footer */}
         <Route path="/admin" element={<AdminPanel />} />
+        <Route path="/crearproducto" element={<CreateProductView/>}></Route>
         <Route path="/editarproducto/:id" element={<EditProductView />}></Route>
       </Routes>
     </Router>
