@@ -14,6 +14,11 @@ const Carrito = ({ open, toggleCart }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [totalPrice, setTotalPrice] = useState(0); // Estado para el precio total
 
+  const clearCart = () => {
+    setCartItems([]); // Limpia el estado de los productos en el carrito
+    localStorage.removeItem("cart"); // Elimina el carrito del localStorage
+  };
+
   useEffect(() => {
     const cart = JSON.parse(localStorage.getItem("cart")) || [];
     setCartItems(cart);
@@ -154,7 +159,10 @@ const Carrito = ({ open, toggleCart }) => {
       {/* Modal de Pago */}
       <PaymentModal
         open={isModalOpen}
-        handleClose={handleCloseModal}
+        handleClose={() => {
+          handleCloseModal(); // Cerrar el modal
+          clearCart(); // Vaciar el carrito
+        }}
         productPrice={totalPrice}
       />
     </>
