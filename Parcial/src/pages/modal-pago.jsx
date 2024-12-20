@@ -3,19 +3,18 @@ import { Modal, Button, Form } from "react-bootstrap";
 import Swal from "sweetalert2";
 
 const PaymentModal = ({ open, handleClose, productPrice }) => {
-  const [amountToPay, setAmountToPay] = React.useState(0); // Estado para el monto a pagar
+  const [amountToPay, setAmountToPay] = React.useState(0); 
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    // Verificar si el monto ingresado es suficiente (mayor o igual al precio total)
     if (amountToPay < productPrice) {
       Swal.fire({
         icon: "error",
         title: "Compra no completada",
         text: `El monto ingresado es menor al precio total de ${productPrice.toFixed(
           2
-        )}.`, // Mostrar el precio con dos decimales
+        )}.`, 
         confirmButtonText: "Intentar de nuevo",
       });
     } else {
@@ -24,12 +23,12 @@ const PaymentModal = ({ open, handleClose, productPrice }) => {
         title: "Compra completada",
         text: `¡Gracias por tu compra! El monto total fue ${amountToPay.toFixed(
           2
-        )}.`, // Mostrar el precio con dos decimales
+        )}.`, 
         confirmButtonText: "Aceptar",
       });
     }
 
-    handleClose(); // Cerrar el modal después de mostrar la alerta
+    handleClose(); 
   };
 
   return (
@@ -39,13 +38,11 @@ const PaymentModal = ({ open, handleClose, productPrice }) => {
       </Modal.Header>
       <Form onSubmit={handleSubmit}>
         <Modal.Body>
-          {/* Campo: Nombre del titular */}
           <Form.Group className="mb-3">
             <Form.Label>Nombre del titular</Form.Label>
             <Form.Control type="text" placeholder="Juan Pérez" required />
           </Form.Group>
 
-          {/* Campo: Número de tarjeta */}
           <Form.Group className="mb-3">
             <Form.Label>Número de tarjeta</Form.Label>
             <Form.Control
@@ -56,13 +53,11 @@ const PaymentModal = ({ open, handleClose, productPrice }) => {
             />
           </Form.Group>
 
-          {/* Campo: Fecha de expiración */}
           <Form.Group className="mb-3">
             <Form.Label>Fecha de expiración</Form.Label>
             <Form.Control type="text" placeholder="MM/AA" required />
           </Form.Group>
 
-          {/* Campo: CVC */}
           <Form.Group className="mb-3">
             <Form.Label>CVC</Form.Label>
             <Form.Control
@@ -73,13 +68,11 @@ const PaymentModal = ({ open, handleClose, productPrice }) => {
             />
           </Form.Group>
 
-          {/* Campo: Dirección de facturación */}
           <Form.Group className="mb-3">
             <Form.Label>Dirección de facturación</Form.Label>
             <Form.Control type="text" placeholder="Calle Falsa 123" required />
           </Form.Group>
 
-          {/* Campo: Monto a pagar */}
           <Form.Group className="mb-3">
             <Form.Label>Monto a pagar</Form.Label>
             <Form.Control

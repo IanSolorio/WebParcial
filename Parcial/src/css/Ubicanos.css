@@ -1,11 +1,8 @@
-/* Fondo general */
 .ubicanos-container {
     background-color: #fdfaf6;
-    /* Color de fondo suave */
     padding: 50px 0;
 }
 
-/* Tarjeta del mapa */
 .map-card {
     background: #ffffff;
     border-radius: 15px;
@@ -15,7 +12,6 @@
     text-align: center;
 }
 
-/* Botón debajo del mapa */
 .map-actions {
     margin-top: 15px;
 }

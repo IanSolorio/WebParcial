@@ -68,9 +68,6 @@ const Empleados = () => {
                     size={24}
                     activeColor="#ffd700"
                     value={empleado.calificacion}
-                    onChange={(newRating) => {
-                      console.log(`${empleado.nombre} calificado con ${newRating} estrellas.`);
-                    }}
                   />
                 </div>
               </div>

@@ -11,7 +11,6 @@ const Contact = () => {
       <div className="row justify-content-center">
         <div className="col-md-6">
           <form>
-            {/* Campo: Nombre */}
             <div className="mb-3">
               <label htmlFor="name" className="form-label">
                 Nombre
@@ -24,7 +23,6 @@ const Contact = () => {
               />
             </div>
 
-            {/* Campo: Pedidos Número */}
             <div className="mb-3">
               <label htmlFor="orderNumber" className="form-label">
                 Numero de telefono
@@ -37,7 +35,6 @@ const Contact = () => {
               />
             </div>
 
-            {/* Campo: Mensaje */}
             <div className="mb-3">
               <label htmlFor="message" className="form-label">
                 Mensaje
@@ -50,9 +47,8 @@ const Contact = () => {
               ></textarea>
             </div>
 
-            {/* Botón de WhatsApp */}
             <a
-              href="https://wa.me/1234567890" // Reemplaza con tu número de WhatsApp
+              href="https://wa.me/1234567890" 
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn-success w-100 d-flex align-items-center justify-content-center"

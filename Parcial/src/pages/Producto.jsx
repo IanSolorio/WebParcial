@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import {
   Box,
   TextField,
@@ -16,23 +16,31 @@ import { getProductos } from "../services/ProductoService";
 import Swal from "sweetalert2";
 
 const Producto = () => {
-  const [priceRange, setPriceRange] = useState([0, 140]);
+  const CATEGORIAS = [
+    "Todas",
+    "Promociones",
+    "Tacos",
+    "Nachos",
+    "Quesadilla",
+    "Bebidas",
+  ];
+  const MAX_PRICE = 30;
+
+  const [priceRange, setPriceRange] = useState([0, MAX_PRICE]);
   const [selectedCategory, setSelectedCategory] = useState("Todas");
   const [searchText, setSearchText] = useState("");
-  const [allProducts, setAllProducts] = useState([]); // Productos obtenidos de la API
+  const [products, setProducts] = useState([]); // Productos originales
   const [filteredProducts, setFilteredProducts] = useState([]); // Productos filtrados
 
-  // Carga los productos desde la API
   useEffect(() => {
     const fetchProductos = async () => {
       try {
         const productos = await getProductos();
-        // Valida que todos los productos tengan `precio` como número
         const validatedProducts = productos.map((product) => ({
           ...product,
-          precio: Number(product.precio), // Asegura que precio sea un número
+          precio: Number(product.precio),
         }));
-        setAllProducts(validatedProducts);
+        setProducts(validatedProducts);
         setFilteredProducts(validatedProducts);
       } catch (error) {
         console.error("Error al cargar los productos:", error);
@@ -41,43 +49,29 @@ const Producto = () => {
     fetchProductos();
   }, []);
 
-  // Actualiza el rango de precios y filtra productos
-  const handleSliderChange = (event, newValue) => {
-    setPriceRange(newValue);
-    filterProducts(newValue, selectedCategory, searchText);
-  };
-
-  // Maneja la selección de categorías
-  const handleCategoryClick = (category) => {
-    setSelectedCategory(category);
-    filterProducts(priceRange, category, searchText);
-  };
-
-  // Maneja la búsqueda de productos
-  const handleSearchChange = (event) => {
-    const text = event.target.value.toLowerCase(); // Convierte el texto a minúsculas
-    setSearchText(text);
-    filterProducts(priceRange, selectedCategory, text); // Aplica el filtro actualizado
-  };
-
-  // Filtra los productos por precio, categoría y texto de búsqueda
-  const filterProducts = (priceRange, category, text) => {
-    const filtered = allProducts.filter((product) => {
+  // Filtrar productos por rango de precios, categoría y búsqueda
+  const filterProducts = useCallback(() => {
+    const filtered = products.filter((product) => {
       const isWithinPrice =
         product.precio >= priceRange[0] && product.precio <= priceRange[1];
       const isInCategory =
-        category === "Todas" || product.categoria === category;
-      const matchesSearch = product.nombre.toLowerCase().includes(text);
+        selectedCategory === "Todas" || product.categoria === selectedCategory;
+      const matchesSearch = product.nombre
+        .toLowerCase()
+        .includes(searchText.toLowerCase());
       return isWithinPrice && isInCategory && matchesSearch;
     });
     setFilteredProducts(filtered);
-  };
+  }, [priceRange, selectedCategory, searchText, products]);
 
-  // Añade un producto al carrito
+  useEffect(() => {
+    filterProducts();
+  }, [filterProducts]);
+
   const addToCart = (product) => {
-    const cart = JSON.parse(localStorage.getItem("cart")) || []; // Recuperar carrito actual
-    const updatedCart = [...cart, product]; // Añadir nuevo producto
-    localStorage.setItem("cart", JSON.stringify(updatedCart)); // Guardar en localStorage
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const updatedCart = [...cart, product];
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
     Swal.fire({
       title: "¡Producto añadido!",
       text: `${product.nombre} se agregó al carrito con éxito.`,
@@ -97,7 +91,7 @@ const Producto = () => {
           padding: "10px",
           marginBottom: "20px",
           alignItems: "center",
-          backgroundColor: "#ffffff",
+          backgroundColor: "white",
         }}
       >
         <TextField
@@ -105,7 +99,7 @@ const Producto = () => {
           variant="outlined"
           fullWidth
           value={searchText}
-          onChange={handleSearchChange}
+          onChange={(e) => setSearchText(e.target.value)}
           sx={{
             "& .MuiOutlinedInput-root": {
               "& fieldset": {
@@ -116,9 +110,7 @@ const Producto = () => {
         />
       </Paper>
 
-      {/* Layout principal */}
       <Grid container spacing={3}>
-        {/* Columna izquierda (Filtro y Categorías) */}
         <Grid item xs={12} md={3}>
           <Paper
             sx={{
@@ -130,7 +122,6 @@ const Producto = () => {
               top: "20px",
             }}
           >
-            {/* Filtro por precio */}
             <Box sx={{ marginBottom: "20px" }}>
               <Typography sx={{ fontWeight: "bold", marginBottom: "10px" }}>
                 Filtrar por precio
@@ -138,10 +129,10 @@ const Producto = () => {
               <Slider
                 value={priceRange}
                 min={0}
-                max={140}
+                max={MAX_PRICE}
                 step={1}
                 valueLabelDisplay="auto"
-                onChange={handleSliderChange}
+                onChange={(e, newValue) => setPriceRange(newValue)}
                 sx={{
                   color: "#a52a2a",
                   "& .MuiSlider-thumb": {
@@ -155,53 +146,37 @@ const Producto = () => {
               </Box>
             </Box>
 
-            {/* Categorías */}
+            <Typography sx={{ fontWeight: "bold", marginBottom: "10px" }}>
+              Categorías
+            </Typography>
             <Box>
-              <Typography
-                sx={{
-                  fontWeight: "bold",
-                  marginBottom: "10px",
-                  color: "#4a1f1f",
-                }}
-              >
-                Categorías
-              </Typography>
-              <Box>
-                {[
-                  "Todas",
-                  "Promociones",
-                  "Tacos",
-                  "Nachos",
-                  "Quesadilla",
-                  "Bebidas",
-                ].map((category) => (
-                  <Typography
-                    key={category}
-                    onClick={() => handleCategoryClick(category)}
-                    sx={{
-                      color:
-                        category === selectedCategory ? "#4a1f1f" : "#a52a2a",
-                      fontWeight:
-                        category === selectedCategory ? "bold" : "normal",
-                      cursor: "pointer",
-                      marginBottom: "8px",
-                      "&:hover": { textDecoration: "underline" },
-                    }}
-                  >
-                    {category}
-                  </Typography>
-                ))}
-              </Box>
+              {CATEGORIAS.map((category) => (
+                <Typography
+                  key={category}
+                  onClick={() => setSelectedCategory(category)}
+                  sx={{
+                    color:
+                      category === selectedCategory ? "#4a1f1f" : "#a52a2a",
+                    fontWeight:
+                      category === selectedCategory ? "bold" : "normal",
+                    cursor: "pointer",
+                    marginBottom: "8px",
+                    "&:hover": { textDecoration: "underline" },
+                  }}
+                >
+                  {category}
+                </Typography>
+              ))}
             </Box>
           </Paper>
         </Grid>
 
-        {/* Columna derecha (Productos) */}
+        {/* Productos */}
         <Grid item xs={12} md={9}>
           <Grid container spacing={3}>
             {filteredProducts.length > 0 ? (
-              filteredProducts.map((product, index) => (
-                <Grid item xs={12} sm={6} md={4} key={index}>
+              filteredProducts.map((product) => (
+                <Grid item xs={12} sm={6} md={4} key={product.id}>
                   <Card
                     sx={{
                       backgroundColor: "#fff",
@@ -228,8 +203,7 @@ const Producto = () => {
                         {product.descripcion}
                       </Typography>
                       <Typography variant="body2" sx={{ color: "#a52a2a" }}>
-                        {/* Asegura que `precio` sea un número antes de usar `toFixed` */}
-                        ${Number(product.precio).toFixed(2)}
+                        ${product.precio.toFixed(2)}
                       </Typography>
                     </CardContent>
                     <CardActions>
@@ -240,7 +214,7 @@ const Producto = () => {
                           backgroundColor: "#a52a2a",
                           "&:hover": { backgroundColor: "#4a1f1f" },
                         }}
-                        onClick={() => addToCart(product)} // Agregar al carrito
+                        onClick={() => addToCart(product)}
                       >
                         Añadir al Carrito
                       </Button>
@@ -248,7 +222,7 @@ const Producto = () => {
                   </Card>
                 </Grid>
               ))
-            ) : (
+             ) : (
               <Typography sx={{ textAlign: "center", width: "100%" }}>
                 No se encontraron productos en esta categoría o rango de precio.
               </Typography>

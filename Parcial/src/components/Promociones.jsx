@@ -6,19 +6,17 @@ import { getProductos } from "../services/ProductoService";
 const Promotions = () => {
   const [promotions, setPromotions] = useState([]);
 
-  // Carga los productos desde la API
   useEffect(() => {
     const fetchPromotions = async () => {
       try {
         const productos = await getProductos();
-        // Filtrar productos cuya categoría sea "Promociones"
         const promotionsData = productos
           .filter((producto) => producto.categoria === "Promociones")
           .map((producto) => ({
             id: producto.id,
-            title: producto.nombre, // Usar el nombre del producto
-            description: producto.descripcion, // Usar la descripción del producto
-            image: producto.imagen, // Usar la URL de la imagen
+            title: producto.nombre, 
+            description: producto.descripcion, 
+            image: producto.imagen, 
           }));
         setPromotions(promotionsData);
       } catch (error) {

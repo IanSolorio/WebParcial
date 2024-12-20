@@ -5,12 +5,9 @@ import "../css/Principal.css";
 const Content = () => {
   return (
     <div className="additional-section">
-      {/* Parte superior con texto y video YouTube */}
       <div className="top-section d-flex align-items-center justify-content-center">
         <div className="row w-100">
-          {/* Columna de texto */}
           <div className="col-md-6 d-flex justify-content-center align-items-center flex-column">
-            {/* Encabezado principal dentro de la misma columna */}
             <h2 style={{ color: "#8B0000", marginBottom: "20px" }}>
               ¡Descubre la Experiencia El Poblano!
             </h2>
@@ -24,7 +21,6 @@ const Content = () => {
               </p>
             </div>
           </div>
-          {/* Columna del video YouTube */}
           <div className="col-md-6 d-flex justify-content-center">
             <iframe
               width="560"
@@ -46,9 +42,7 @@ const Content = () => {
         </div>
       </div>
 
-      {/* Parte inferior */}
       <div className="bottom-section row align-items-center">
-        {/* Columna de la imagen */}
         <div className="col-md-6 text-center">
           <img
             src={img}
@@ -62,8 +56,6 @@ const Content = () => {
             }}
           />
         </div>
-
-        {/* Columna del texto */}
         <div className="col-md-6 text-center text-md-start">
           <div className="content-box">
             <h3 style={{ color: "#8B0000" }}>

@@ -30,7 +30,6 @@ function App() {
       <Carrito open={isCartOpen} toggleCart={toggleCart} />
 
       <Routes>
-        {/* Rutas Públicas con Navbar y Footer */}
         <Route
           path="/"
           element={
