@@ -23,7 +23,6 @@ function App() {
   return (
     <Router>
       <Routes>
-        {/* Rutas Públicas con Navbar y Footer */}
         <Route
           path="/"
           element={

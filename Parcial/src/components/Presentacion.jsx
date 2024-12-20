@@ -16,7 +16,6 @@ const Presentacion = () => {
     >
       <div className="container">
         <div className="row align-items-center">
-          {/* Columna Izquierda */}
           <div className="col-md-6 text-center text-md-start">
             <h2 className="fw-bold">
               EL POBLANO<span className="text-danger"> RESTAURANT</span>

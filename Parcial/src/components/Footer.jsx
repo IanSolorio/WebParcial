@@ -8,7 +8,6 @@ const Footer = () => {
     <footer style={{ backgroundColor: '#4A1F1F', color: '#fff', padding: '20px 0' }}>
       <div className="container">
         <div className="row text-center text-md-start">
-          {/* Columna 1: Información */}
           <div className="col-md-4 mb-3">
             <h5 className="text-uppercase fw-bold">El Poblano</h5>
             <p>
@@ -17,7 +16,6 @@ const Footer = () => {
             </p>
           </div>
 
-          {/* Columna 2: Links */}
           <div className="col-md-4 mb-3">
             <h5 className="text-uppercase fw-bold">Enlaces Rápidos</h5>
             <ul className="list-unstyled">
@@ -36,14 +34,13 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Columna 3: Contacto */}
           <div className="col-md-4 mb-3">
             <h5 className="text-uppercase fw-bold">Contáctanos</h5>
             <p>
-              <i className="fas fa-map-marker-alt"></i> Cancún, México
+              <i className="fas fa-map-marker-alt"></i> Puerto Maldonado, Perú
             </p>
             <p>
-              <i className="fas fa-phone"></i> +52 998 123 4567
+              <i className="fas fa-phone"></i> +51 998 123 4567
             </p>
             <p>
               <i className="fas fa-envelope"></i> contacto@elpoblano.com
@@ -75,7 +72,6 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Derechos Reservados */}
         <div className="text-center">
           <p className="mb-0">&copy; {new Date().getFullYear()} El Poblano. Todos los derechos reservados.</p>
         </div>

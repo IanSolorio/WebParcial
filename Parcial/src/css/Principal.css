@@ -57,7 +57,6 @@ form textarea:focus {
   box-shadow: 0 0 5px rgba(210, 35, 42, 0.5);
 }
 
-/* Scrollbar oculto */
 .d-flex::-webkit-scrollbar {
   display: none;
 }
@@ -67,7 +66,6 @@ form textarea:focus {
   scrollbar-width: none;
 }
 
-/* Tarjetas de Promociones */
 .card-title,
 .card-text {
   white-space: normal;
@@ -80,15 +78,12 @@ form textarea:focus {
 
 /* Parte Content-Home */
 
-/* Contenedor principal */
 .additional-section {
   margin-top: 50px;
 }
 
-/* Parte superior */
 .top-section {
   background-color: #ece5dd;
-  /* Color beige similar al ejemplo */
   padding: 40px;
   display: flex;
   justify-content: left;
@@ -97,7 +92,6 @@ form textarea:focus {
 
 .bottom-section {
   background-color: white;
-  /* Color azul */
   padding: 40px;
   display: flex;
   justify-content: right;
@@ -106,7 +100,6 @@ form textarea:focus {
 
 .content-box {
   background-color: #fff;
-  /* Fondo blanco para el contenido */
   padding: 20px;
   border: 1px solid #ddd;
   border-radius: 5px;
@@ -116,37 +109,31 @@ form textarea:focus {
 
 .content-box h3 {
   color: #a52a2a;
-  /* Marrón para títulos */
   margin-bottom: 10px;
 }
 
 .content-box p {
   color: #555;
-  /* Gris oscuro para el texto */
 }
 
 .top-section .content-box {
   margin-right: 20px;
-  /* Espaciado entre el texto y el video */
 }
 
 .section-header h2 {
   font-size: 28px;
   font-weight: bold;
   color: #8b0000;
-  /* Marrón oscuro */
 }
 
 @media (max-width: 768px) {
   .top-section {
     flex-direction: column;
-    /* Cambia a diseño vertical */
     text-align: center;
   }
 
   .tiktok-video-container iframe {
     width: 100%;
-    /* Ajusta el video al ancho disponible */
     height: auto;
   }
 }

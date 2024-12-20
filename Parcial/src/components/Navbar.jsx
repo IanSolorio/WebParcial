@@ -24,7 +24,6 @@ const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-lg bg-white border-bottom shadow-sm">
       <div className="container">
-        {/* Logo */}
         <Link className="navbar-brand d-flex align-items-center" to="/">
           <img
             src={logo}
@@ -33,7 +32,6 @@ const Navbar = () => {
           />
         </Link>
 
-        {/* Botón de colapso en dispositivos pequeños */}
         <button
           className="navbar-toggler"
           type="button"
@@ -46,7 +44,6 @@ const Navbar = () => {
           <span className="navbar-toggler-icon"></span>
         </button>
 
-        {/* Contenido de navegación */}
         <div className="collapse navbar-collapse" id="navbarContent">
           <ul className="navbar-nav mx-auto mb-2 mb-lg-0">
             <li className="nav-item">
@@ -76,7 +73,6 @@ const Navbar = () => {
             </li>
           </ul>
 
-          {/* Redes sociales */}
           <div className="d-flex align-items-center me-3">
             <a
               href="https://www.facebook.com"
@@ -120,7 +116,6 @@ const Navbar = () => {
             </a>
           </div>
 
-          {/* Botón de LOGIN */}
           <button
             className="btn btn-dark rounded-pill px-4"
             style={{ fontWeight: "bold" }}
@@ -133,7 +128,6 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Modal de Login */}
       <LoginModal
         open={openLoginModal}
         onClose={() => setOpenLoginModal(false)}
