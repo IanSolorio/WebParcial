@@ -11,6 +11,7 @@ import Conocenos from "./pages/Conocenos";
 import EditProductView from "./views/EditProducto";
 import CreateProductView from "./views/CreateProductView";
 import Ubicanos from "./pages/Ubicanos";
+import Producto from "./pages/Producto";
 function App() {
   return (
     <Router>
@@ -34,7 +35,7 @@ function App() {
           element={
             <>
               <Navbar />
-              <h1>Productos</h1>
+              <Producto />
               <Footer />
             </>
           }
@@ -54,7 +55,7 @@ function App() {
           element={
             <>
               <Navbar />
-              <Ubicanos/>
+              <Ubicanos />
               <Footer />
             </>
           }
@@ -72,7 +73,7 @@ function App() {
 
         {/* Ruta para AdminPanel sin Navbar ni Footer */}
         <Route path="/admin" element={<AdminPanel />} />
-        <Route path="/crearproducto" element={<CreateProductView/>}></Route>
+        <Route path="/crearproducto" element={<CreateProductView />}></Route>
         <Route path="/editarproducto/:id" element={<EditProductView />}></Route>
       </Routes>
     </Router>

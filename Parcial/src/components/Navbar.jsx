@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faTwitter, faTiktok, faInstagram, faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import logo from '../assets/image/LogoSinFondo.png';
-import "../css/Principal.css";
 
 const Navbar = () => {
   return (
