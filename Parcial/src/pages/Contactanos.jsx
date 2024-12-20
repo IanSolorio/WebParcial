@@ -1,11 +1,12 @@
-import React from 'react';
+import React from "react";
 
 const Contact = () => {
   return (
     <div className="container py-5">
       <h1 className="text-center mb-4">Contáctanos</h1>
       <p className="text-center">
-        ¿Tienes alguna pregunta o deseas realizar un pedido? ¡Estamos aquí para ayudarte!
+        ¿Tienes alguna pregunta o deseas realizar un pedido? ¡Estamos aquí para
+        ayudarte!
       </p>
       <div className="row justify-content-center">
         <div className="col-md-6">
@@ -26,13 +27,13 @@ const Contact = () => {
             {/* Campo: Pedidos Número */}
             <div className="mb-3">
               <label htmlFor="orderNumber" className="form-label">
-                Pedidos Número
+                Numero de telefono
               </label>
               <input
                 type="text"
                 className="form-control"
                 id="orderNumber"
-                placeholder="Ingresa el número de tu pedido"
+                placeholder="Ingrese su Numero Telefonico"
               />
             </div>
 
@@ -55,7 +56,7 @@ const Contact = () => {
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn-success w-100 d-flex align-items-center justify-content-center"
-              style={{ fontSize: '1.2rem', gap: '10px' }}
+              style={{ fontSize: "1.2rem", gap: "10px" }}
             >
               <i className="fab fa-whatsapp"></i> Enviar
             </a>

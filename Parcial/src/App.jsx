@@ -8,6 +8,7 @@ import Promotions from './components/Promociones';
 import Content from './components/Content';
 import AdminPanel from './views/AdminPanel';
 import Conocenos from './pages/Conocenos';
+import Ubicanos from './pages/Ubicanos';
 
 function App() {
   // Hook para obtener la ubicación actual
@@ -35,7 +36,7 @@ function App() {
         />
         <Route path="/productos" element={<h1>Productos</h1>} />
         <Route path="/nosotros" element={<Conocenos />} />
-        <Route path="/ubicanos" element={<h1>Ubícanos</h1>} />
+        <Route path="/ubicanos"  element={<Ubicanos />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/admin" element={<AdminPanel />} />
       </Routes>
