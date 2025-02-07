@@ -7,6 +7,8 @@ import { BrowserRouter } from "react-router-dom";
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
+    <BrowserRouter basename="/WebParcial">  {/* Aquí agregamos el basename */}
       <App />
+    </BrowserRouter>
   </React.StrictMode>
 );
