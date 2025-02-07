@@ -21,7 +21,6 @@ function App() {
 
 
   return (
-    <Router>
       <Routes>
         <Route
           path="/"
@@ -81,7 +80,6 @@ function App() {
         <Route path="/crearproducto" element={<CreateProductView />}></Route>
         <Route path="/editarproducto/:id" element={<EditProductView />}></Route>
       </Routes>
-    </Router>
   );
 }
 
